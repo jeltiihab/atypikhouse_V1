@@ -36,12 +36,14 @@ Route::get('/email/verify', function () {
 })->middleware('auth:sanctum')->name('verification.notice');
 
 
-Route::get('/email/verify/{id}/{hash}', function (Request $request) {
-    $user = \App\Models\User::findOrFail( (int)$request->route('id') );
-    $user->markEmailAsVerified();
-    event(new Verified($user));
-    return redirect("https://f2i-cw1-ij-hc-nag.fr/") ;
-})->middleware(['signed'])->name('verification.verify');
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return [
+        "message"=>"email verified with success",
+        "url" => "/"
+    ] ;
+})->middleware(['auth:sanctum', 'signed'])->name('verification.verify');
 
 Route::post('/email/verification-notification', function (Request $request) {
     $request->user()->sendEmailVerificationNotification();

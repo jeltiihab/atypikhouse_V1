@@ -56,7 +56,6 @@ class AuthController extends Controller
             "firstName"=>$user->firstName,
             "lastName"=>$user->lastName,
             "email"=>$user->email,
-            "phone" => $user->phone,
             "role" => $role
         ];
 
@@ -105,10 +104,9 @@ class AuthController extends Controller
                     "firstName"=>$user->firstName,
                     "lastName"=>$user->lastName,
                     "email"=>$user->email,
-                    "phone" => $user->phone,
                     "role" => $role
                 ]
-            ]);
+                ]);
     }
 
     // method for user logout and delete token
