@@ -1,6 +1,2 @@
-# Ignore everything (folders and files) on root only
-/*
-!api
-!vercel.json
-!*.html
-!*.css
+/vendor
+/nova/vendor
