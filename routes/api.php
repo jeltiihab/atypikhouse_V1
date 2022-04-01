@@ -28,6 +28,10 @@ use Illuminate\Support\Facades\Route;
 
     Route::group(['middleware' => ['auth:sanctum',"verified"]], function () {
 
+        Route::get('/greeting', function () {
+            return 'Hello World';
+        });
+
     Route::post('/reservations/check',[ReservationController::class,'check']);
     Route::get('/reservations/confirmation/{orderID}',[ReservationController::class,"approvePayment"])->name('order.capture')->middleware("signed");
 
